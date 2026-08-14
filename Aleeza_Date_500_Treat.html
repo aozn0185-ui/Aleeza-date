@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleeza ❤️ Qasim</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffd6e7,#ffeef5);overflow:hidden}
+.card{width:min(90%,430px);padding:42px 24px;text-align:center;background:#fff;border-radius:28px;
+box-shadow:0 15px 45px rgba(150,50,90,.18)}.heart{font-size:58px;animation:pulse 1.2s infinite}
+h1{color:#d6336c;margin:12px 0 8px;font-size:29px}p{color:#555;font-size:18px;line-height:1.5}
+.buttons{display:flex;gap:18px;justify-content:center;margin-top:28px;min-height:54px}
+button{border:0;border-radius:14px;padding:14px 28px;font-size:17px;font-weight:bold;cursor:pointer;
+box-shadow:0 7px 16px rgba(0,0,0,.12)}#yes{background:#e83e6f;color:white}#no{background:#eee;color:#555}
+#screen2{display:none}.msg{display:none;color:#d6336c;font-size:21px;font-weight:bold;margin-top:22px}
+@keyframes pulse{50%{transform:scale(1.12)}} 
+</style></head>
+<body>
+<div class="card">
+  <section id="screen1">
+    <div class="heart">❤️</div>
+    <h1>Aleeza, will you go on a date with me?</h1>
+    <p>Qasim has one very important question for you... 🥺💕</p>
+    <div class="buttons">
+      <button id="dateYes">YES 💖</button><button id="dateNo">NO 🙈</button>
+    </div>
+  </section>
+
+  <section id="screen2">
+    <div class="heart">💸❤️</div>
+    <h1>YAYYY Aleeza! 😭❤️</h1>
+    <p>Date confirmed! 🥰<br><br>Ab ek choti si request...<br><b>Rs 500 ki treat dogi? 😂💸</b></p>
+    <div class="buttons">
+      <button id="moneyYes">YES 💸</button><button id="moneyNo">NO 🙈</button>
+    </div>
+    <div id="thanks" class="msg">Awww 😭❤️ Thank you Aleeza! Treat locked! 😂💸</div>
+  </section>
+</div>
+
+<script>
+const move=(btn)=>{
+ btn.style.position='fixed';
+ const x=Math.max(10,Math.random()*(innerWidth-btn.offsetWidth-20));
+ const y=Math.max(10,Math.random()*(innerHeight-btn.offsetHeight-20));
+ btn.style.left=x+'px';btn.style.top=y+'px';
+};
+document.getElementById('dateNo').addEventListener('mouseenter',()=>move(dateNo));
+document.getElementById('dateNo').addEventListener('touchstart',e=>{e.preventDefault();move(dateNo)});
+document.getElementById('dateNo').addEventListener('click',()=>move(dateNo));
+
+document.getElementById('dateYes').onclick=()=>{
+ document.getElementById('screen1').style.display='none';
+ document.getElementById('screen2').style.display='block';
+};
+
+document.getElementById('moneyNo').addEventListener('mouseenter',()=>move(moneyNo));
+document.getElementById('moneyNo').addEventListener('touchstart',e=>{e.preventDefault();move(moneyNo)});
+document.getElementById('moneyNo').addEventListener('click',()=>move(moneyNo));
+
+document.getElementById('moneyYes').onclick=()=>{
+ document.querySelector('#screen2 .buttons').style.display='none';
+ document.getElementById('thanks').style.display='block';
+};
+</script>
+</body></html>
